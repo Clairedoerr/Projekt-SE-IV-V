@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FloraSense – Anmelden</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="auth-page">
+
+<div class="auth-card">
+
+    <div class="auth-logo">
+        <div class="auth-logo-img">Logo<br>hier</div>
+        <a href="dashboard.html" class="logo">Flora<span>Sense</span></a>
+        <span class="tagline">Intelligente Pflanzenüberwachung</span>
+    </div>
+
+    <h2>Anmelden</h2>
+
+    <form action="/login" method="POST">
+        <div class="form-group">
+            <label for="email">E-Mail-Adresse</label>
+            <input type="email" id="email" name="email" placeholder="name@beispiel.de" required>
+        </div>
+        <div class="form-group">
+            <label for="password">Passwort</label>
+            <input type="password" id="password" name="password" placeholder="Ihr Passwort" required>
+        </div>
+        <input type="submit" value="Anmelden">
+    </form>
+
+    <div class="auth-footer">
+        Noch kein Konto? <a href="register.html">Jetzt registrieren</a>
+    </div>
+
+</div>
+
+</body>
+</html>
