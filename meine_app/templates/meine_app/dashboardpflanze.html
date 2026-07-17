@@ -1,0 +1,215 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <title>FloraSense – Dashboard</title>
+    <link rel="stylesheet" href="{% static 'styles/style.css' %}">
+</head>
+
+<body>
+
+<header>
+
+    <div class="header-left">
+        <img src="{% static 'images/logo.png' %}" class="logo-img" style="width:50px;">
+        <div>
+            <a href="{% url 'dashboard' %}" class="logo">FloraSense</a>
+            <div class="tagline">Intelligente Pflanzenüberwachung</div>
+        </div>
+    </div>
+
+    <div class="header-right">
+        <a href="{% url 'profil' %}" class="nav-link">Einstellungen</a>
+
+        <div class="profile-link">
+            <div class="profile-avatar">{{ initials }}</div>
+            <span class="profile-name">
+                {{ user.firstname }} {{ user.lastname }}
+            </span>
+        </div>
+    </div>
+
+</header>
+
+<h2>Übersicht</h2>
+
+<div class="stat-row">
+
+    <div class="stat">
+        <div class="stat-label">Pflanzen gesamt</div>
+        <div class="stat-value">
+            {{ pflanzen|length }} <small>Töpfe</small>
+        </div>
+    </div>
+
+    <div class="stat">
+        <div class="stat-label">Letztes Update</div>
+        <div class="stat-value">
+            {{ letzte_zeit }}
+        </div>
+    </div>
+
+</div>
+
+<h2>Meine Pflanzen</h2>
+
+{% for pflanze in pflanzen %}
+
+<details open>
+
+    <summary>
+
+        <div>
+            {{ pflanze.name }}
+            <div class="summary-meta">
+                {{ pflanze.standort }} · {{ pflanze.sensor }}
+            </div>
+        </div>
+
+        {% if pflanze.feuchte < 35 %}
+            <span class="status-badge dry">⚠️ trocken</span>
+        {% elif pflanze.feuchte < 50 %}
+            <span class="status-badge warn">mittel</span>
+        {% else %}
+            <span class="status-badge ok">gut</span>
+        {% endif %}
+
+    </summary>
+
+    <div class="plant-details">
+
+        <!-- FEUCHTE -->
+        <div class="moisture-row">
+
+            <div class="moisture-row-label">
+                <span>Bodenfeuchtigkeit</span>
+                <strong>{{ pflanze.feuchte }} %</strong>
+            </div>
+
+            <div class="bar-track">
+                <div class="bar-fill" style="width: {{ pflanze.feuchte }}%"></div>
+            </div>
+
+        </div>
+
+        <!-- DETAILS -->
+        <div class="detail-grid">
+
+            <div class="detail-box">
+                <div class="detail-box-label">Temperatur</div>
+                <div class="detail-box-value">
+                    {{ pflanze.temperatur }} °C
+                </div>
+            </div>
+
+            <!-- 🔥 NEU -->
+            <div class="detail-box">
+                <div class="detail-box-label">Luftfeuchte</div>
+                <div class="detail-box-value">
+                    {{ pflanze.luft }} %
+                </div>
+            </div>
+
+            <div class="detail-box">
+                <div class="detail-box-label">Pumpe</div>
+                <div class="detail-box-value">
+
+                    {% if pflanze.wasser == "on" %}
+                        <span style="color:green;">läuft</span>
+                    {% else %}
+                        <span style="color:red;">aus</span>
+                    {% endif %}
+
+                </div>
+            </div>
+
+            <div class="detail-box">
+                <div class="detail-box-label">Auto-Modus</div>
+                <div class="detail-box-value">
+                    {% if pflanze.auto %}
+                        aktiv
+                    {% else %}
+                        pausiert
+                    {% endif %}
+                </div>
+            </div>
+
+        </div>
+
+        <form class="pump-form"
+            action="{% url 'dashboard' %}"
+            method="POST">
+
+            {% csrf_token %}
+
+            <label>Menge (ml):</label>
+
+            <input type="number"
+                name="menge"
+                value="100"
+                min="50"
+                max="500">
+
+            <input type="submit"
+                name="giessen"
+                value="Jetzt gießen">
+
+        </form>
+
+    </div>
+
+</details>
+
+{% endfor %}
+
+<!-- 🔥 FIXED STYLE -->
+<h2>Neue Pflanze hinzufügen</h2>
+
+<div class="add-plant-box">
+
+    <!-- ❗ WICHTIG: action FIX -->
+    <form action="{% url 'dashboard' %}" method="POST">
+
+        {% csrf_token %}
+
+        <div class="form-grid">
+
+            <div class="form-group">
+                <label>Pflanzenname</label>
+                <input type="text" name="name" placeholder="z.B. Aloe Vera" required>
+            </div>
+
+            <div class="form-group">
+                <label>Standort</label>
+                <input type="text" name="standort" placeholder="z.B. Wohnzimmer">
+            </div>
+
+            <div class="form-group">
+                <label>Sensor-ID</label>
+                <input type="text" name="sensor" placeholder="z.B. Sensor 5">
+            </div>
+
+            <div class="form-group">
+                <label>Auto-Bewässerung</label>
+                <select name="auto">
+                    <option value="1">Aktiv</option>
+                    <option value="0">Deaktiviert</option>
+                </select>
+            </div>
+
+        </div>
+
+        <input type="submit" value="+ Pflanze hinzufügen">
+
+    </form>
+
+</div>
+
+<footer>
+    FloraSense · CK
+</footer>
+
+</body>
+</html>

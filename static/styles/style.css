@@ -29,12 +29,20 @@ header {
 
 
 .logo {
-    width: 65px;
-    height: 65px;
-    object-fit: contain;
+    font-size: 34px;
+    text-decoration: none;
+    color: #3f5f45;
+    font-weight: bold;
 }
 
-.logo span { color: #6a9e5a; }
+.logo-img {
+    width: 55px;
+    height: auto;
+}
+
+.logo span {
+    color: #3f5f45;
+}
 
 .tagline {
     font-size: 10px;
@@ -607,4 +615,25 @@ footer {
     text-transform: uppercase;
     letter-spacing: 1.5px;
     text-align: center;
+}
+
+/* Passwort ändern schöner machen */
+.section-box input[type="password"] {
+    padding: 9px 12px;
+    border: 1px solid #d8e4d0;
+    border-radius: 6px;
+    font-size: 13px;
+    font-family: Georgia, serif;
+    background: #f4f1ec;
+    color: #2a3a2a;
+}
+
+.section-box input[type="password"]:focus {
+    outline: none;
+    border-color: #6a9e5a;
+    background: #fff;
+}
+
+input[value="Passwort ändern"] {
+    margin-left: 20px;
 }

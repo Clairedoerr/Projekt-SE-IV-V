@@ -1,0 +1,42 @@
+{
+  "kristina": {
+    "firstname": "Kristina",
+    "lastname": "Baotic",
+    "email": "kristina@gmail.com",
+    "password": "12345678",
+    "role": "user",
+    "created_at": "22.05.2026"
+  },
+  "claire.doerr": {
+    "firstname": "Claire",
+    "lastname": "Dörr",
+    "email": "claire.doerr@t-online.de",
+    "password": "12345678",
+    "role": "user",
+    "created_at": "22.05.2026"
+  },
+  "test": {
+    "firstname": "Clai",
+    "lastname": "Dörr",
+    "email": "test@test.de",
+    "password": "12345678",
+    "role": "user",
+    "created_at": "17.06.2026"
+  },
+  "maxmuster": {
+    "firstname": "max",
+    "lastname": "muster",
+    "email": "maxmuster@gmail.com",
+    "password": "12345678",
+    "role": "user",
+    "created_at": "18.06.2026"
+  },
+  "test1": {
+    "firstname": "Claire",
+    "lastname": "Dörr",
+    "email": "test1@test.de",
+    "password": "12345678",
+    "role": "user",
+    "created_at": "26.06.2026"
+  }
+}

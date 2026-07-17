@@ -1,0 +1,50 @@
+[
+  {
+    "id": 1,
+    "username": "maxmuster",
+    "name": "e",
+    "standort": "e",
+    "sensor_id": "1",
+    "feuchte": 50,
+    "temperatur": 21,
+    "licht": 680,
+    "wasser": "off",
+    "auto": true
+  },
+  {
+    "id": 1,
+    "username": "kristina",
+    "name": "a",
+    "standort": "a",
+    "sensor_id": "1",
+    "feuchte": 50,
+    "temperatur": 21,
+    "licht": 680,
+    "wasser": "off",
+    "auto": true
+  },
+  {
+    "id": 1,
+    "username": "test",
+    "name": "Bogenhanf",
+    "standort": "Wohnzimmer",
+    "sensor_id": "1",
+    "feuchte": 50,
+    "temperatur": 21,
+    "licht": 680,
+    "wasser": "off",
+    "auto": true
+  },
+  {
+    "id": 1,
+    "username": "test1",
+    "name": "Kalanchoe",
+    "standort": "Urban Harbour ",
+    "sensor_id": "1",
+    "feuchte": 50,
+    "temperatur": 21,
+    "licht": 680,
+    "wasser": "off",
+    "auto": true
+  }
+]
